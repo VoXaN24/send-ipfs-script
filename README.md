@@ -5,4 +5,6 @@ Download file from internet and upload it automaticly to IPFS !
 Work thank's to the [Estuary Gateway](https://estuary.tech/)
 
 # Autoinstall script (Debian & Ubuntu Only)
-` | sudo bash`
+`wget https://git.io/JPXms -O install.sh &&
+chmod +x install.sh &&
+sudo ./install.sh && rm install.sh`
