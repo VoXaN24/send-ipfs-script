@@ -4,7 +4,7 @@ echo "Choose your source : 1 - Direct Link (wget) 2- Direct Link (Aria2c) 3- Gdr
 read choix
 
 if [ $choix == "2" ]; then
-    echo 'enter the url (under "")'
+    echo 'enter the url'
     read url
     echo 'enter the filename'
     read filename
@@ -20,7 +20,7 @@ if [ $choix == "2" ]; then
     echo "IPFS CID: $cid"
     rm -rf $filename
 elif [ $choix == "1" ]; then
-    echo 'enter the url (under "")'
+    echo 'enter the url'
     read url
     echo 'enter the filename'
     read filename
@@ -54,4 +54,3 @@ elif [ $choix == "3" ]; then
 else
     echo 'Please make a choose next time'
 fi
-
