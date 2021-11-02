@@ -9,6 +9,7 @@ if [ $choix == "2" ]; then
     echo 'enter your estuary API Key'
     read api
     filename=$(printf '%b' "${url//%/\\x}")
+    filename=$(echo ${filename##+(*/)})
     echo 'Start download'
     mkdir ~/dl
     cd ~/dl
@@ -29,6 +30,7 @@ elif [ $choix == "1" ]; then
     read api
     echo 'Start download'
     filename=$(printf '%b' "${url//%/\\x}")
+    filename=$(echo ${filename##+(*/)})
     mkdir ~/dl
     cd ~/dl
     wget $url -O "$filename"
@@ -68,6 +70,7 @@ elif [ $choix == 4 ]; then
     read api
     cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$path" | jq -r '.cid')
     filename=$(printf '%b' "${path//%/\\x}")
+    
     myfilesize=$(wc -c "$path" | awk '{print $1}')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
