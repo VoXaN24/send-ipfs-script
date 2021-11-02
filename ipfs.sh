@@ -6,10 +6,9 @@ read choix
 if [ $choix == "2" ]; then
     echo 'enter the url'
     read url
-    echo 'enter the filename'
-    read filename
     echo 'enter your estuary API Key'
     read api
+    filename=$(printf '%b' "${url//%/\\x}")
     echo 'Start download'
     mkdir ~/dl
     cd ~/dl
@@ -26,11 +25,10 @@ if [ $choix == "2" ]; then
 elif [ $choix == "1" ]; then
     echo 'enter the url'
     read url
-    echo 'enter the filename'
-    read filename
     echo 'enter your estuary API Key'
     read api
     echo 'Start download'
+    filename=$(printf '%b' "${url//%/\\x}")
     mkdir ~/dl
     cd ~/dl
     wget $url -O "$filename"
