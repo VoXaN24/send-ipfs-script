@@ -1,6 +1,6 @@
 # send-ipfs-script
  
-Download file from internet and upload it automaticly to IPFS !
+Download file from internet and upload it automatically to IPFS !
 
 Work thank's to the [Estuary Gateway](https://estuary.tech/)
 
