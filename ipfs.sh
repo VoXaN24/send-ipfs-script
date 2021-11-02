@@ -18,6 +18,7 @@ if [ $choix == "2" ]; then
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
+    echo "IPFS Download Link : https://dweb.link/ipfs/$cid"
     rm -rf $filename
 elif [ $choix == "1" ]; then
     echo 'enter the url'
@@ -34,6 +35,7 @@ elif [ $choix == "1" ]; then
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
+    echo "IPFS Download Link : https://dweb.link/ipfs/$cid"
     rm -rf $filename
 elif [ $choix == "3" ]; then
     echo 'Enter the Gdrive ID File'
@@ -50,6 +52,7 @@ elif [ $choix == "3" ]; then
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
+    echo "IPFS Download Link : https://dweb.link/ipfs/$cid"
     rm -rf $filename
 else
     echo 'Please make a choose next time'
