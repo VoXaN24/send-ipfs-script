@@ -17,7 +17,7 @@ if [ $choix == "2" ]; then
     cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
-    echo "IPFS CID: $cid"
+    echo "IPFS CID: /ipfs/$cid"
     rm -rf $filename
 elif [ $choix == "1" ]; then
     echo 'enter the url'
@@ -33,7 +33,7 @@ elif [ $choix == "1" ]; then
     cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
-    echo "IPFS CID: $cid"
+    echo "IPFS CID: /ipfs/$cid"
     rm -rf $filename
 elif [ $choix == "3" ]; then
     echo 'Enter the Gdrive ID File'
@@ -49,7 +49,7 @@ elif [ $choix == "3" ]; then
     myfilesize=$(wc -c "$filename" | awk '{print $1}')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
-    echo "IPFS CID: $cid"
+    echo "IPFS CID: /ipfs/$cid"
     rm -rf $filename
 else
     echo 'Please make a choose next time'
