@@ -11,6 +11,8 @@ if [ $choix == "2" ]; then
     echo 'enter your estuary API Key'
     read api
     echo 'Start download'
+    mkdir ~/dl
+    cd ~/dl
     aria2c -x16 $url --out="$filename"
     myfilesize=$(wc -c "$filename" | awk '{print $1}')
     echo 'Start upload'
@@ -19,7 +21,8 @@ if [ $choix == "2" ]; then
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
     echo "IPFS Download Link : https://dweb.link/ipfs/$cid"
-    rm -rf $filename
+    cd ..
+    rm -rf ~/dl
 elif [ $choix == "1" ]; then
     echo 'enter the url'
     read url
@@ -28,6 +31,8 @@ elif [ $choix == "1" ]; then
     echo 'enter your estuary API Key'
     read api
     echo 'Start download'
+    mkdir ~/dl
+    cd ~/dl
     wget $url -O "$filename"
     myfilesize=$(wc -c "$filename" | awk '{print $1}')
     echo 'Start upload'
@@ -36,7 +41,8 @@ elif [ $choix == "1" ]; then
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
     echo "IPFS Download Link : https://dweb.link/ipfs/$cid"
-    rm -rf $filename
+    cd ..
+    rm -rf ~/dl
 elif [ $choix == "3" ]; then
     echo 'Enter the Gdrive ID File'
     read idg
@@ -45,6 +51,8 @@ elif [ $choix == "3" ]; then
     echo 'enter your estuary API Key'
     read api
     echo 'Start download'
+    mkdir ~/dl
+    cd ~/dl
     gdown https://drive.google.com/u/0/uc?id=$idg
     echo 'Start upload'
     cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
@@ -53,7 +61,8 @@ elif [ $choix == "3" ]; then
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
     echo "IPFS Download Link : https://dweb.link/ipfs/$cid"
-    rm -rf $filename
+    cd ..
+    rm -rf ~/dl
 else
     echo 'Please make a choose next time'
 fi
