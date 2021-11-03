@@ -9,7 +9,7 @@ if [ $choix == "2" ]; then
     echo 'enter your estuary API Key'
     read api
     filename=$(basename $url)
-    filename=$(printf '%b' "${url//%/\\x}")
+    filename=$(printf '%b' "${filename//%/\\x}")
     echo 'Start download'
     mkdir ~/dl
     cd ~/dl
@@ -30,7 +30,7 @@ elif [ $choix == "1" ]; then
     read api
     echo 'Start download'
     filename=$(basename $url)
-    filename=$(printf '%b' "${url//%/\\x}")
+    filename=$(printf '%b' "${filename//%/\\x}")
     mkdir ~/dl
     cd ~/dl
     wget $url -O "$filename"
