@@ -16,7 +16,7 @@ if [ $choix == "2" ]; then
     aria2c -x16 $url --out="$filename"
     myfilesize=$(wc -c "$filename" | awk '{print $1}')
     echo 'Start upload'
-    cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
+    cid=$(curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
@@ -36,7 +36,7 @@ elif [ $choix == "1" ]; then
     wget $url -O "$filename"
     myfilesize=$(wc -c "$filename" | awk '{print $1}')
     echo 'Start upload'
-    cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
+    cid=$(curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
     echo "IPFS CID: /ipfs/$cid"
@@ -55,7 +55,7 @@ elif [ $choix == "3" ]; then
     cd ~/dl
     gdown https://drive.google.com/u/0/uc?id=$idg
     echo 'Start upload'
-    cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
+    cid=$(curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$filename" | jq -r '.cid')
     myfilesize=$(wc -c "$filename" | awk '{print $1}')
     echo "filename : $filename"
     echo "size in byte : $myfilesize"
@@ -68,7 +68,7 @@ elif [ $choix == 4 ]; then
     read path
     echo 'enter your estuary API Key'
     read api
-    cid=$(curl -X POST https://shuttle-1.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$path" | jq -r '.cid')
+    cid=$(curl -X POST https://api.estuary.tech/content/add -H "Authorization: Bearer $api" -H "Accept: application/json" -H "Content-Type: multipart/form-data" -F "data=@$path" | jq -r '.cid')
     filename=$(printf '%b' "${path//%/\\x}")
     myfilesize=$(wc -c "$path" | awk '{print $1}')
     echo "filename : $filename"
